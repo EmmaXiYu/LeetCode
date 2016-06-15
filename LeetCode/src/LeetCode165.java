@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * bug free: hard
+ * knowledge: easy
+ */
 public class LeetCode165 {
 
 	 public static  int compareVersion(String version1, String version2) {
@@ -30,7 +34,26 @@ public class LeetCode165 {
 		        }
 		         intList2.add(Integer.parseInt(version2.substring(indexOfDot+1)));}
 		         else intList2.add(Integer.parseInt(version2.substring(0)));
-	 }
+	         double version1Num=0;
+	         double version2Num=0;
+	         for(int i=0;i<intList1.size();i++)
+	         {
+	        	 version1Num+=intList1.get(i)*Math.pow(10,-i);
+	         }
+	         for(int i=0;i<intList2.size();i++)
+	         {
+	        	 version2Num+=intList2.get(i)*Math.pow(10,-i);
+	         } 
+	         int result=0;
+	         if((version1Num-version2Num)<0.0000000000001&&(version1Num-version2Num)>-0.0000000000001)
+	         result=0;
+	         else if ((version1Num-version2Num)>0.0000000000001)
+             result=1;
+	         else if((version1Num-version2Num)<-0.0000000000001)
+	        	 result =-1;
+	         
+	         return result;
+	         }
 	public static void main(String[] args) {
 		String one="1.0";
 		String two="1";
