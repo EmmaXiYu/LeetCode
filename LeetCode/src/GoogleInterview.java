@@ -1,7 +1,7 @@
 
 public class GoogleInterview {
 
-	/*
+	/*h
 	 * Given a string like 3(abc)2(bc)cc, the output should be abcabcabcbcbccc
 	 */
 	public static  String buildAString(String s)
