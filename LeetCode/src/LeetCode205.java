@@ -45,9 +45,10 @@ public class LeetCode205 {
 		 while(iterator.hasNext())
 		 {
                List<Integer> l= iterator.next().getValue();
+               char value=t.charAt(l.get(0));
                for(int i=0;i<l.size();i++)
                {
-            	   sCharArray[l.get(i)]=t.charAt(l.get(i));
+            	   sCharArray[l.get(i)]=value;
                }
 		 }
 		for(int i=0;i<sCharArray.length;i++)
