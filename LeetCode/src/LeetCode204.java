@@ -1,7 +1,7 @@
 
 public class LeetCode204 {
 	/*
-	 * brute-force
+	 * brute-force: Time limit exceeded
 	 */
 	  public static int countPrimes(int n) {
 	       
