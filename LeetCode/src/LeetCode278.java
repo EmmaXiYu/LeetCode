@@ -6,7 +6,7 @@ public class LeetCode278 {
 		int firstBadPosition = 1;
 		int left = 1;
 		int right = n;
-		int checkPosition = (left + right) / 2;
+		int checkPosition =left+ (right-left) / 2; 
 		boolean ifFoundFirstBadVersion=false;
 		while (!ifFoundFirstBadVersion) {
 			if (isBadVersion(checkPosition)) {
