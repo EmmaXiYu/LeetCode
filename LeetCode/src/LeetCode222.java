@@ -24,7 +24,7 @@ public class LeetCode222 {
 	    * S(n)=n
 	    * Time limit exceeded
 	    */
-	   public int countNodes2(TreeNode root) {
+	   public static  int countNodes2(TreeNode root) {
 	        if(root==null) return 0;
 	        else{
 	       Queue <TreeNode> queue=new LinkedList<>();
@@ -46,47 +46,36 @@ public class LeetCode222 {
 	   
 	   
 	   public static int countNodes(TreeNode root) {
-	        if(root==null) return 0;
-	         HashMap<TreeNode, Integer> hm=new HashMap<>();
-	        int rootHeight=getLargestHeight(root, hm);
-	        int lastLevelFullNodeNum=(int)Math.pow(2, rootHeight-1);
-	        TreeNode iterator=root;
-	        
-	        while(iterator.left!=null||iterator.right!=null)
-	        { int leftHeight=0;
-	        int rigthHeight=0;
-	        	if(iterator.left!=null)
-	        		leftHeight=hm.get(iterator.left);
-	        	if(iterator.right!=null)
-	            rigthHeight=hm.get(iterator.right);
-	            if(leftHeight>rigthHeight)
-	            {
-	                lastLevelFullNodeNum-=(int)Math.pow(2, leftHeight-1);
-	                iterator=iterator.left;
-	            }
-	            else if(leftHeight==rigthHeight)
-	            {
-	                 iterator=iterator.right;
-	            }
-	            
-	        }
-	        int total=lastLevelFullNodeNum+(1-(int)Math.pow(2,rootHeight-1))/(1-2);
-	        return total;
+	       if(root==null) return 0;
+	       int leftHeight=getLeftHeight(root.left);
+	       int rightHeight=getLeftHeight(root.right);
+	       if(leftHeight==rightHeight)
+	       return (1<<leftHeight)+countNodes(root.right);
+	       
+	           
+	           return (1<<rightHeight)+countNodes(root.left);
+	     
+	       
 	        
 	    }
 	    
-	    public static int getLargestHeight(TreeNode root , HashMap<TreeNode,Integer> hm)
+	    public static int getLeftHeight(TreeNode root)
 	    {
 	        if(root==null) return 0;
-	        else{
-	            
-	            int height=1+Math.max(getLargestHeight(root.right, hm),getLargestHeight(root.left,hm));
-	            hm.put(root, height);
-	        return height ;}
+	        TreeNode iterator=root;
+	        int height=0;
+	        while(iterator!=null)
+	        {
+	            height++;
+	            iterator=iterator.left;
+	        }
+	        return height;
 	    }
 	public static void main(String[] args) {
 		TreeNode root=new TreeNode(1);
 		root.left=new TreeNode(2);
+		root.right=new TreeNode(3);
+		root.left.left=new TreeNode(4);
 		System.out.println(countNodes(root));
 
 	}
