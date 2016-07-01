@@ -50,10 +50,10 @@ public class LeetCode106 {
 	 public static TreeNode buildTree(int[] inorder, int[] postorder) {
 	        if(inorder==null||postorder==null) return null;
 	        else if (inorder.length==0||postorder.length==0) return null;
-	        else return build_Tree(inorder, 0, inorder.length-1, postorder, 0, postorder.length-1);
+	        else return build_Tree(inorder, 0, inorder.length-1, postorder, postorder.length-1);
 	    }
 	    
-	    public static TreeNode build_Tree(int [] inorder, int inorderStart, int inorderEnd, int [] postorder, int postorderStart, int postorderEnd)
+	    public static TreeNode build_Tree(int [] inorder, int inorderStart, int inorderEnd, int [] postorder,  int postorderEnd)
 	    {
 	         TreeNode root=null;
 	         if(inorderStart<=inorderEnd){
@@ -65,11 +65,11 @@ public class LeetCode106 {
 	                break;
 	        }
 	        
-	        // root.right = build(inorder,inStart,index+1,postorder,postStart-1);
+	        // root.right = build(inorder,inStart,index+1,postorder,postStart-1);   
 	   // root.left = build(inorder,index-1,inEnd,postorder,postStart-(inStart-index)-1);
 
-	         root.left=build_Tree(inorder, inorderStart, i-1, postorder, postorderStart, i-1);
-	        root.right=build_Tree(inorder, i+1, inorderEnd, postorder, i, postorderEnd-1);
+	         root.left=build_Tree(inorder, inorderStart, i-1, postorder,postorderEnd-1-(inorderEnd-i));
+	        root.right=build_Tree(inorder, i+1, inorderEnd, postorder, postorderEnd-1);
 	           
 	           
 	       }
@@ -91,8 +91,8 @@ public class LeetCode106 {
 	}
 	
 	public static void main(String[] args) {
-		int [] inorder ={1,3,2};
-		int [] postorder ={3,2,1};
+		int [] inorder ={4,5,6,7,8,10,14,15,20};
+		int [] postorder ={4,6,8,7,5,14,20,15,10};
 		TreeNode root=buildTree(inorder, postorder);
 		printTreeInOrder(root);
 		
