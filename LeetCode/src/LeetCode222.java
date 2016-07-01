@@ -44,7 +44,10 @@ public class LeetCode222 {
 	       return counter;}
 	    }
 	   
-	   
+	   /*
+	    * T(n)=(lgn)^2
+	    * S(n)=1
+	    */
 	   public static int countNodes(TreeNode root) {
 	       if(root==null) return 0;
 	       int leftHeight=getLeftHeight(root.left);
