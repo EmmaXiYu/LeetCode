@@ -1,6 +1,7 @@
-
 public class LeetCode96 {
-	 public int numTrees(int n) {
+	
+	
+	 public  static int numTrees(int n) {
 	        if(n<=0) return 0;
 	        int[] dp=new int[n+1];
 	        dp[0]=1;
@@ -13,4 +14,9 @@ public class LeetCode96 {
 	        }
 	        return dp[n];
 	    }
+	 
+	 public static void main(String[] args)
+	 {
+		 System.out.println(numTrees(4));
+	 }
 }
