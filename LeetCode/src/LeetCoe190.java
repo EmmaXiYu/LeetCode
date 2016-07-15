@@ -22,6 +22,7 @@ public class LeetCoe190 {
 		
      int test=43261596;
     System.out.println( reverseBits(test));
+    
 	}
 
 }

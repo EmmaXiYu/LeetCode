@@ -11,9 +11,5 @@ public class LeetCode100 {
 	        }
 	    }
 	 
-	 public static void main(String arg[])
-	 {
-		 
-		 
-	 }
+
 }
