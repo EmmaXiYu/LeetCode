@@ -3,25 +3,29 @@ import java.util.List;
 
 public class LeetCode300 {
 
-	 public int lengthOfLIS(int[] nums) {
-	        
-	        int max=0;
-	        for(int i=0;i<nums.length;i++)
-	        {
-	            int num=nums[i];
-	            int counter=1;
-	            for(int j=i+1;j<nums.length;j++)
-	            {
-	                if(nums[j]>num)
-	                {
-	                    num=nums[j];
-	                    counter++;
-	                }
-	            }
-	            max=Math.max(max,counter);
-	        }
-	        return max;
+	/*
+	 * O(n2) complexity.
+	 */
+	public int lengthOfLIS(int[] nums) {
+	     if(nums==null||nums.length==0) return 0;
+	       int [] dp=new int[nums.length];
+	       dp[0]=1;
+	       int returnMax=1;
+	       for(int i=1;i<nums.length;i++)
+	       {
+	           int max=1;
+	           for(int j=i-1;j>=0;j--)
+	           {
+	               if(nums[j]<nums[i])
+	               max=Math.max(max,dp[j]+1);
+	               
+	           }
+	           dp[i]=max;
+	           returnMax=Math.max(returnMax, max);
+	       }
+	       return returnMax;
 	    }
+	
 	public static void main(String[] args) {
 		
 		LeetCode300 obj=new LeetCode300();
