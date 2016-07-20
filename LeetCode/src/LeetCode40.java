@@ -4,43 +4,44 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LeetCode40 {
+	
 	 public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 	       List<List<Integer>> ll=new ArrayList<>();
 		        List<Integer> l=new ArrayList<>();
-		        HashMap<List<Integer> ,Integer> hm=new HashMap<>();
 		        Arrays.sort(candidates);
-		       combination_Sum(ll, candidates,target, 0,l, -1,hm);
+		       combination_Sum(ll, candidates,target, 0,l, 0);
 		            
 		        
 		        return ll;
 	    }
 	    
-	     public void combination_Sum( List<List<Integer>> ll,int[] candidates, int target, int sum,List<Integer> l, int index, HashMap<List<Integer> ,Integer> hm)
+	     public void combination_Sum( List<List<Integer>> ll,int[] candidates, int target, int sum,List<Integer> l, int index)
 		    {
 		        if(sum==target)
 		        {
-		        	 List<Integer> newList=new ArrayList<>(l);
-		        	   if(!hm.containsKey(newList))
-		         {ll.add(newList);
-		         hm.put(newList, ll.size()-1);}
+		        	List<Integer> newList=new ArrayList<>(l);
+		        	 ll.add(newList);
+		       
 		         return;   
-		        }
+		       }
 		        if(sum>target) 
 		        {
-		        	//sum-=l.get(l.size()-1);
+		        	
 		        	return;}
 		        List<Integer> newList=new ArrayList<>(l);
-		        for(int i=index+1;i<candidates.length;i++)
+		        for(int i=index;i<candidates.length;i++)
 		        {
-		        
+		        if((i-1)>=index&&candidates[i]==candidates[i-1])
+				        	continue;
+				        
 		        int newSum=sum;
 		        newSum+=candidates[i];
 		        if(newSum>target){
 		        	break;
 		        }
-		        
+		      
 		        newList.add(candidates[i]);
-		        combination_Sum(ll,candidates,  target , newSum, newList, i,hm);
+		        combination_Sum(ll,candidates,  target , newSum, newList, i+1);
 		        newList.remove(newList.size()-1);
 		        }
 		    }
