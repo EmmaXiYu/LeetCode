@@ -2,6 +2,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeetCode5 {
+	
+	/*
+	 * This method works. Don't use substring. user char [] 
+	 */
+	  public String longestPalindrome(String s) {
+	        char[] charArray=s.toCharArray();
+	        int indexOne=0;
+	        int indexTwo=0;
+	        int maxLength=0;
+	        for(int i=0;i<s.length();i++)
+	        {
+	             int j=i;
+	            int  k=i+1;
+	            while(k<s.length() &&j>-1&& charArray[j]==charArray[k])
+	            {
+	                if(k-j+1>maxLength)
+	                {
+	                    indexOne=j;
+	                    indexTwo=k;
+	                    maxLength=k-j+1;
+	                }
+	                j--;
+	                k++;
+	            }
+	              j=i-1;
+	             k=i+1;
+	           while(k<s.length() &&j>-1&& charArray[j]==charArray[k])
+	            {
+	                if(k-j+1>maxLength)
+	                {
+	                    indexOne=j;
+	                    indexTwo=k;
+	                    maxLength=k-j+1;
+	                }
+	                j--;
+	                k++;
+	            }
+	            
+	        }
+	        return s.substring(indexOne,indexTwo+1);
+	        
+	    }
 	/*
 	 * Time limit exceeded
 	 */
