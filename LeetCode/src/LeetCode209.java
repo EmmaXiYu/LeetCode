@@ -2,6 +2,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeetCode209 {
+	
+	/*
+	 * Time limit exceeded recursively
+	 */
+//	
+//	 public int minSubArrayLen(int s, int[] nums) {
+//	        if(nums==null||nums.length==0) return 0;
+//	        int r=min_subarray_len(s, nums,  0, nums.length);
+//	      if(r==-1)
+//	      return 0;
+//	      else return r;
+//	        
+//	     }
+//	     
+//	    public int min_subarray_len(int s, int[] nums, int start, int maxLength)
+//	    {
+//	         for(int i=1;i<=maxLength;i++)
+//	         {
+//	              for(int j=start;j<nums.length;j++){
+//	              int returnLength = min(s, nums, i, j);
+//	              if(returnLength!=-1)
+//	              return returnLength;
+//	               
+//	              }
+//	                 
+//	               
+//	         
+//		    }
+//		    return -1;
+//	    }
+//		public int min(int s, int[] nums, int length, int index)
+//		{
+//		    if(length==1&&index<nums.length)
+//		    {
+//	             if(nums[index]>=s)
+//	             return length;
+//	             else return -1;
+//	                     
+//		    }
+//		     if(index>=nums.length)
+//		    return -1;
+//		    if(s<=0) return -1;
+//		    else {
+//		        int n=min_subarray_len(s-nums[index],  nums, index+1,length-1 );
+//		        if(n!=-1)
+//		        return  1+n;
+//		        else return -1;
+//		    }
+//		   
+//		}
 	/*
 	 * Time limit exceeded
 	 */
@@ -48,9 +98,9 @@ public class LeetCode209 {
 	    public static void main(String[] args)
 	    {
 	    	LeetCode209 obj=new LeetCode209();
-	    	int[] l={1,4,4,4};
+	    	int[] l={1,2,3,4,5};
 	    	
-	    //	System.out.println(obj.minSubArrayLen(4, l));
+	   // System.out.println(obj.minSubArrayLen(11, l));
 	    	
 	    }
 }
